@@ -4,7 +4,7 @@
   "description": "Producer-Consumer Extension for ReactiveX components",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/MaximilianoFelice/rx-producer-consumer/issues"
   },
-  "homepage": "https://github.com/MaximilianoFelice/rx-producer-consumer#readme"
+  "homepage": "https://github.com/MaximilianoFelice/rx-producer-consumer#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  }
 }
