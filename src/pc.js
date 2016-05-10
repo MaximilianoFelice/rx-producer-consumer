@@ -1,3 +1,3 @@
-export default function(){
-  return "Hola"
-}
+import Producer from './producer';
+
+export {Producer};

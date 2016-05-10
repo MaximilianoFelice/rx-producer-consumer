@@ -1,10 +1,10 @@
 import {assert} from 'chai';
-import magic from '../src/pc';
+import {Producer} from '../src/pc';
 
-describe('Test', function() {
-  describe('pc', function () {
-    it('should use function', function () {
-      assert.equal("Hola", magic());
-    });
+describe('Producer-Consumer', function() {
+
+  it('should be able to produce values', function () {
+    const prod = Producer.create(subject => subject.onNext(1));
   });
+
 });
