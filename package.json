@@ -2,9 +2,9 @@
   "name": "rx-producer-consumer",
   "version": "0.0.1",
   "description": "Producer-Consumer Extension for ReactiveX components",
-  "main": "index.js",
+  "main": "src/pc.js",
   "scripts": {
-    "test": "mocha test",
+    "test": "mocha --compilers js:babel-core/register",
     "compile": "babel -d lib/ src/",
     "prepublish": "npm run compile"
   },
