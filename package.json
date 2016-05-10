@@ -1,0 +1,27 @@
+{
+  "name": "rx-producer-consumer",
+  "version": "0.0.1",
+  "description": "Producer-Consumer Extension for ReactiveX components",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaximilianoFelice/rx-producer-consumer.git"
+  },
+  "keywords": [
+    "Rx",
+    "Reactive",
+    "Producer",
+    "Consumer",
+    "Extension",
+    "Functional"
+  ],
+  "author": "Maximiliano Felice",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MaximilianoFelice/rx-producer-consumer/issues"
+  },
+  "homepage": "https://github.com/MaximilianoFelice/rx-producer-consumer#readme"
+}
