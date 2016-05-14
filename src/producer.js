@@ -17,7 +17,7 @@ export default class Producer extends Rx.Observable {
   subscribe(onNext, onError, onCompleted) {
     const subj = Rx.Subject();
     const subs = subj.subscribe(onNext, onError, onCompleted);
-    this.fn(subj);
+    this.fn(subj.onNext, subj.onError, subj.onCompleted);
     return subs;
   }
 }
