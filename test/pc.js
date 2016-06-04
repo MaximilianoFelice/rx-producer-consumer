@@ -9,8 +9,20 @@ describe('Producer-Consumer', function() {
 
   it('should be able to produce values', function () {
     const prod = Producer.create(onNext => onNext(1));
-    const prom = new Promise(resolve => prod.consume().subscribe(x => resolve(x)))
+    const prom = new Promise(resolve => prod.consume().subscribe(x => resolve(x))) 
     return chai.expect(prom).to.eventually.equal(1);
+  });
+
+  it('should complete consumption after getting to its limit', function () {
+    const prod = Producer.create(onNext => onNext(1));
+    const prom = new Promise(resolve => prod.consume().subscribe(x => x, () => _, () => resolve()))
+    return chai.expect(prom).to.be.fulfilled;
+  });
+
+  it('should call onError if an error is thrown', function () {
+    const prod = Producer.create(onNext => {throw "foo"});
+    const prom = new Promise(resolve => prod.consume().subscribe(x => x, err => resolve(err), () => _))
+    return chai.expect(prom).to.eventually.equal("foo");
   });
 
   it('should be able to produce for multiple consumers', function(){

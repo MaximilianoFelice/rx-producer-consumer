@@ -1,12 +1,18 @@
 "use strict";
 
 import Rx from 'rx';
-import Consumer from './consumer';
 
 class ProducerObservable extends Rx.Observable {
   constructor(fn, amount=1){
     super(fn, amount);
-    this.subscribe = (onNext, onError, onSubscribe) => { for(let i=0; i<amount; i++) fn(onNext, onError, onSubscribe) }
+    this.subscribe = (onNext, onError, onComplete) => { 
+      try{ 
+        for(let i=0; i<amount; i++) fn(onNext);
+        onComplete();
+       } catch(err) { 
+        onError(err) 
+      }
+    }
   }
 }
 
