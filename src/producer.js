@@ -1,23 +1,25 @@
 "use strict";
 
 import Rx from 'rx';
+import Consumer from './consumer';
 
-export default class Producer extends Rx.Observable {
+class ProducerObservable extends Rx.Observable {
+  constructor(fn, amount=1){
+    super(fn, amount);
+    this.subscribe = (onNext, onError, onSubscribe) => { for(let i=0; i<amount; i++) fn(onNext, onError, onSubscribe) }
+  }
+}
+
+export default class Producer {
   constructor(fn){
-    super(fn);
     this.fn = fn;
   }
 
   static create(fn) {
-    return new this(fn);
+    return new Producer(fn);
   }
 
-  wrapFunction(fn, subs){ return value => {fn(value); subs.unsubscribe()} }
-
-  subscribe(onNext, onError, onCompleted) {
-    const subj = Rx.Subject();
-    const subs = subj.subscribe(onNext, onError, onCompleted);
-    this.fn(subj.onNext, subj.onError, subj.onCompleted);
-    return subs;
+  consume(amount=1){
+    return new ProducerObservable(this.fn, amount);
   }
 }
